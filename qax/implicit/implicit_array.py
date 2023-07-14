@@ -12,7 +12,7 @@ from jax.api_util import flatten_fun, flatten_fun_nokwargs
 from jax import core
 import jax.linear_util as lu
 import jax.interpreters.partial_eval as pe
-from jax.tree_util import register_pytree_with_keys_class
+from ..common.jax_tree_util import register_pytree_with_keys_class
 import jax.numpy as jnp
 
 from jax._src.typing import DTypeLike, Shape

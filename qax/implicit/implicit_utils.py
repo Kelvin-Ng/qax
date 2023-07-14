@@ -6,6 +6,7 @@ from jax.api_util import flatten_fun_nokwargs
 from jax import core
 import jax.linear_util as lu
 from jax import tree_util
+from ..common import jax_tree_util
 
 from . import implicit_array as ia
 
@@ -39,9 +40,9 @@ def leaf_predicate(x):
     return isinstance(x, (ia.ImplicitArray, _EmptyNodeCls))
 
 tree_map_with_implicit = combine_leaf_predicate(jax.tree_map, leaf_predicate)
-tree_map_with_path_with_implicit = combine_leaf_predicate(tree_util.tree_map_with_path, leaf_predicate)
+tree_map_with_path_with_implicit = combine_leaf_predicate(jax_tree_util.tree_map_with_path, leaf_predicate)
 tree_flatten_with_implicit = combine_leaf_predicate(tree_util.tree_flatten, leaf_predicate)
-tree_flatten_with_path_with_implicit = combine_leaf_predicate(tree_util.tree_flatten_with_path, leaf_predicate)
+tree_flatten_with_path_with_implicit = combine_leaf_predicate(jax_tree_util.tree_flatten_with_path, leaf_predicate)
 tree_leaves_with_implicit = combine_leaf_predicate(tree_util.tree_leaves, leaf_predicate)
 tree_structure_with_implicit = combine_leaf_predicate(tree_util.tree_structure, leaf_predicate)
 
